@@ -1,0 +1,45 @@
+name: Frontend AWS CI/CD
+# see https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Emulate build step"
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts
+        path: ${{ github.workspace }}/resources
+
+  deploy:
+    needs: build
+    name: Deploy build artifacts to S3
+    runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: "Download build artifacts"
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifacts
+        path: ${{ github.workspace }}/resources
+
+    # https://github.com/aws-actions/configure-aws-credentials/issues/271
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@master
+      with:
+        aws-region: us-east-1
+        role-to-assume: ${{ secrets.AWS_ROLE_FOR_GITHUB }}
+        role-session-name: GitHubActions
+    - run: aws sts get-caller-identity
+    - name: Copy files to the test website with the AWS CLI
+      run: |
+        aws s3 sync ./resources s3://report-generator-frontend
