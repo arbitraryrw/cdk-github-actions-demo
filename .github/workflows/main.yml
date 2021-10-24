@@ -1,4 +1,4 @@
-name: Example Pipeline
+name: Example CDK Pipeline
 
 on:
   push:
@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    -run: ls -al
     - name: "Emulate build step"
       uses: actions/upload-artifact@v2
       with:
