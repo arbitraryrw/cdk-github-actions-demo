@@ -40,6 +40,7 @@ class CdkGithubActionsDemoStack(cdk.Stack):
         bucket = s3.Bucket(
             self,
             f"example_bucket",
+            bucket_name="cdk-github-actions-demo",
             encryption=s3.BucketEncryption.S3_MANAGED,
             enforce_ssl=True,
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,

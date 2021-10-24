@@ -44,4 +44,4 @@ jobs:
     - run: aws sts get-caller-identity
     - name: Copy files to the test website with the AWS CLI
       run: |
-        aws s3 sync ./resources s3://report-generator-frontend
+        aws s3 sync ./resources s3://cdk-github-actions-demo
