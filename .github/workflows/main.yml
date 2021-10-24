@@ -6,13 +6,13 @@ on:
 
 jobs:
   build:
+    name: Emulate build step
     runs-on: ubuntu-latest
 
     steps:
     - name: Checking out repository
     - uses: actions/checkout@v2
-    - run: ls -al
-    - name: "Emulate build step"
+    - name: "Upload artifacts"
       uses: actions/upload-artifact@v2
       with:
         name: build-artifacts
