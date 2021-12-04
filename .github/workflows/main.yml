@@ -36,7 +36,7 @@ jobs:
 
     # https://github.com/aws-actions/configure-aws-credentials/issues/271
     - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@master
+      uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_FOR_GITHUB }}
