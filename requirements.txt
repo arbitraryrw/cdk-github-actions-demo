@@ -1,1 +1,20 @@
--e .
+attrs==21.2.0
+aws-cdk.aws-events==1.129.0
+aws-cdk.aws-iam==1.129.0
+aws-cdk.aws-kms==1.129.0
+aws-cdk.aws-s3==1.129.0
+aws-cdk.cloud-assembly-schema==1.129.0
+aws-cdk.core==1.129.0
+aws-cdk.cx-api==1.129.0
+aws-cdk.region-info==1.129.0
+cattrs==1.0.0
+-e git+git@github.com:arbitraryrw/cdk-github-actions-demo.git@1f9431c0b4306ca569c0e1b9bde81d0a285e9423#egg=cdk_github_actions_demo
+constructs==3.3.161
+importlib-resources==5.3.0
+jsii==1.40.0
+pkg-resources==0.0.0
+publication==0.0.3
+python-dateutil==2.8.2
+six==1.16.0
+typing-extensions==3.10.0.2
+zipp==3.6.0
