@@ -34,7 +34,6 @@ jobs:
         name: build-artifacts
         path: ${{ github.workspace }}/resources
 
-    # https://github.com/aws-actions/configure-aws-credentials/issues/271
     - name: Configure AWS credentials from Test account
       uses: aws-actions/configure-aws-credentials@v1
       with:
